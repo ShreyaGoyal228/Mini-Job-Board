@@ -1,6 +1,3 @@
-'use server'
-export const dynamic = 'force-dynamic';
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { db } from "@/server/db"
@@ -11,6 +8,7 @@ import JobPostingForm from "../../new/job-posting-form";
 
 export default async function EditJobPost({params}:{params:Promise<{id:string}>}) {
   const jobId=(await params).id
+  const dynamic = 'force-dynamic';
 const job=await db.job.findFirst({
   select:{
 title:true,

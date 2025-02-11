@@ -6,6 +6,7 @@ import { redirect } from "next/navigation"
 
 const ApplicationPage=async({params}:{params:Promise<{jobId:string}>})=>{
   const jobId=(await params).jobId
+  const dynamic = 'force-dynamic';
     const job = await db.job.findUnique({
         where: { id: jobId }
       })

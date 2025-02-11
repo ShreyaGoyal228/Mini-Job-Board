@@ -1,5 +1,4 @@
 'use server'
-export const dynamic = 'force-dynamic';
 import { Button } from '@/components/ui/button'
 import { Card ,CardContent , CardTitle,CardHeader} from '@/components/ui/card'
 import { db } from '@/server/db'
@@ -10,6 +9,7 @@ import ApplicationCard from './application-card'
 
 export default async function JobApplications ({params}:{params:Promise<{id:string}>}) {
   const jobId=(await params).id
+const dynamic = 'force-dynamic';
     //finding the applications with this jobId that is params.id
     const job=await db.job.findFirst({
      where:{

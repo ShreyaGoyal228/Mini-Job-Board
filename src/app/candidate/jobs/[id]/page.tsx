@@ -1,5 +1,5 @@
 'use server'
-export const dynamic = 'force-dynamic';
+
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import Link from 'next/link'
@@ -12,6 +12,7 @@ export default async function JobDetailPage({
   params: Promise<{ id: string }> 
 }) {
   const jobId=(await params).id
+  const dynamic = 'force-dynamic';
   const job = await db.job.findUnique({
     where: { 
       id: jobId,
