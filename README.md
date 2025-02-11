@@ -1,29 +1,58 @@
-# Create T3 App
+# Job Board Application
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+A modern job board application that allows companies to post and manage job listings and candidates to apply for jobs.
 
-## What's next? How do I make an app with this?
+## Features
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+- **Job Posting Management**
+  - Create new job postings with detailed information
+  - Edit existing job postings
+  - Delete job postings (soft delete)
+  - View all job listings
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+- **Job Applying**
+  - Candidates can apply to jobs
+  - View detailed view for particular job
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+- **Rich Form Handling**
+  - Form validation using Zod
+  - Real-time error messages
+  - Automatic form state management
 
-## Learn More
+- **Modern UI Components**
+  - Built with shadcn/ui components
+  - Responsive design with Tailwind CSS
+  - Clean and intuitive user interface
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+- **Server Actions**
+  - Type-safe server actions for data mutations
+  - Optimistic updates
+  - Automatic page revalidation
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+## Tech Stack
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+- **Framework**: Next.js 14 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: shadcn/ui
+- **Database**: Prisma with PostgreSQL
+- **Form Handling**: React Hook Form with Zod validation
+- **State Management**: React Server Components + Server Actions
 
-## How do I deploy this?
+## Getting Started
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+### Installation
+
+1. Clone the repository:
+
+2. Install dependencies:
+   pnpm install
+
+3. Update the `.env` file with your database connection string:
+   DATABASE_URL="your-database-connection-string" you can see .env.example
+
+4. Start the development server:
+   pnpm run dev
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
+
