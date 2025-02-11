@@ -1,4 +1,5 @@
 'use server'
+export const dynamic = 'force-dynamic';
 import { Button } from '@/components/ui/button'
 import { Card ,CardContent , CardTitle,CardHeader} from '@/components/ui/card'
 import { db } from '@/server/db'

@@ -1,29 +1,21 @@
+export const dynamic = 'force-dynamic';
 import Link from 'next/link'
 import { 
   Briefcase, 
-  Filter, 
-  Search, 
   ChevronLeft,
-  MoreVertical,
-  Edit,
-  Users,
-  Trash2
 } from 'lucide-react'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { 
-  Select, 
-  SelectContent, 
-  SelectItem, 
-  SelectTrigger, 
-  SelectValue 
-} from '@/components/ui/select'
 import { db } from '@/server/db'
 export default async function JobListingsPage() {
   const jobs = await db.job.findMany({
-    where: { deletedAt: null }
-  })
+    where: {
+        deletedAt: null
+    },
+    orderBy: {
+        createdAt: "desc"
+    }
+})
 
   return (
     <div className="container mx-auto px-4 py-8">
