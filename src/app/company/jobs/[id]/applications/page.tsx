@@ -7,11 +7,12 @@ import Link from 'next/link'
 import React from 'react'
 import ApplicationCard from './application-card'
 
-export default async function JobApplications ({params}:{params:{id:string}}) {
+export default async function JobApplications ({params}:{params:Promise<{id:string}>}) {
+  const jobId=(await params).id
     //finding the applications with this jobId that is params.id
     const job=await db.job.findFirst({
      where:{
-      id:params.id
+      id:jobId
      },
      include:{
       applications:true

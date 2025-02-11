@@ -7,11 +7,12 @@ import { notFound } from 'next/navigation'
 export default async function JobDetailPage({ 
   params 
 }: { 
-  params: { id: string } 
+  params: Promise<{ id: string }> 
 }) {
+  const jobId=(await params).id
   const job = await db.job.findUnique({
     where: { 
-      id: params.id,
+      id: jobId,
       deletedAt: null
     }
   })

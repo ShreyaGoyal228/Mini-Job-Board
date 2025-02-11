@@ -8,7 +8,8 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import JobPostingForm from "../../new/job-posting-form";
 
-export default async function EditJobPost({params}:{params:{id:string}}) {
+export default async function EditJobPost({params}:{params:Promise<{id:string}>}) {
+  const jobId=(await params).id
 const job=await db.job.findFirst({
   select:{
 title:true,
@@ -19,7 +20,7 @@ description:true,
 salaryRange:true
   },
     where:{
-        id:params.id,
+        id:jobId,
         deletedAt:null
     }
 })
@@ -49,7 +50,7 @@ if(!job)
             </CardDescription>
           </CardHeader>
           <CardContent>
-         <JobPostingForm job={job} isEditing={true} jobId={params.id}/>
+         <JobPostingForm job={job} isEditing={true} jobId={jobId}/>
           </CardContent>
         </Card>
       </div>

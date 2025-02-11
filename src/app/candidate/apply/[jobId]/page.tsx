@@ -1,11 +1,13 @@
+'use server'
 import JobApplicationForm from "@/app/candidate/apply/[jobId]/job-application-form"
 import { Card ,CardContent} from "@/components/ui/card"
 import { db } from "@/server/db"
 import { redirect } from "next/navigation"
 
-const ApplicationPage=async({params}:{params:{jobId:string}})=>{
+const ApplicationPage=async({params}:{params:Promise<{jobId:string}>})=>{
+  const jobId=(await params).jobId
     const job = await db.job.findUnique({
-        where: { id: params.jobId }
+        where: { id: jobId }
       })
 
       if(!job)
