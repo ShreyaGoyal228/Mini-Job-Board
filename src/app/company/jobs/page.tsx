@@ -73,7 +73,7 @@ export default async function CompanyJobs() {
               key={job.id}
               className="relative transform bg-white transition-all duration-300 hover:shadow-xl"
             >
-              <div className="absolute right-2 top-[13  px] md:right-6 md:top-6">
+              <div className="absolute right-2 top-[13px] md:right-6 md:top-6">
                 <EditDeleteDropDown jobId={job.id} />
               </div>
               <CardHeader className="p-4 md:p-6">
