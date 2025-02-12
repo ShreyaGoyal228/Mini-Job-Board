@@ -1,22 +1,21 @@
-import { Button } from '@/components/ui/button'
-import Link from 'next/link'
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function ApplicationSuccessPage() {
   return (
-    <div className="container max-w-2xl mx-auto py-16 px-4 text-center">
-      <div className="bg-white rounded-lg shadow p-8">
-        <h1 className="text-2xl font-semibold text-gray-900 mb-4">
+    <div className="container mx-auto max-w-2xl px-4 py-16 text-center">
+      <div className="rounded-lg bg-white p-8 shadow">
+        <h1 className="mb-4 text-xl font-semibold text-gray-900 md:text-2xl">
           Application Submitted Successfully!
         </h1>
-        <p className="text-gray-600 mb-8">
-          Thank you for your application. We will review it and get back to you soon.
+        <p className="mb-8 text-gray-600">
+          Thank you for your application. We will review it and get back to you
+          soon.
         </p>
         <Link href="/candidate/jobs">
-          <Button>
-            Back to Job Listings
-          </Button>
+          <Button>Back to Job Listings</Button>
         </Link>
       </div>
     </div>
-  )
+  );
 }

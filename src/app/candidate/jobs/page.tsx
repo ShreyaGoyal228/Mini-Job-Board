@@ -1,29 +1,32 @@
-export const dynamic = 'force-dynamic';
-import Link from 'next/link'
-import { 
-  Briefcase, 
-  ChevronLeft,
-} from 'lucide-react'
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { db } from '@/server/db'
+export const dynamic = "force-dynamic";
+import Link from "next/link";
+import { Briefcase, ChevronLeft } from "lucide-react";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { db } from "@/server/db";
 export default async function JobListingsPage() {
   const jobs = await db.job.findMany({
     where: {
-        deletedAt: null
+      deletedAt: null,
     },
     orderBy: {
-        createdAt: "desc"
-    }
-})
+      createdAt: "desc",
+    },
+  });
 
   return (
-    <div className="container mx-auto px-4 py-8">
-       <div className="flex items-center mb-6">
+    <div className="container mx-auto px-5 py-8">
+      <div className="flex items-center md:mb-6">
         <Link href="/">
           <Button
             variant="ghost"
-            className="gap-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 md:px-4"
+            className="gap-2 px-0 text-gray-600 hover:bg-gray-100 hover:text-gray-900 md:px-4"
           >
             <ChevronLeft className="h-4 w-4" />
             <span className="hidden sm:inline">Back to Home</span>
@@ -31,11 +34,11 @@ export default async function JobListingsPage() {
           </Button>
         </Link>
       </div>
-      <div className=" bg-white shadow-sm rounded-lg p-6">
-        <h1 className="text-4xl font-bold text-gray-800 mb-4">
+      <div className="py-4 md:p-6">
+        <h1 className="text-2xl font-bold text-gray-800 md:mb-4 md:text-4xl">
           Job Listings
         </h1>
-        
+
         {/* <div className="flex space-x-4 mb-6">
           <div className="relative flex-grow">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
@@ -60,20 +63,20 @@ export default async function JobListingsPage() {
       </div>
 
       {jobs.length === 0 ? (
-        <div className="text-center py-12 bg-gray-50 rounded-lg">
+        <div className="rounded-lg bg-gray-50 py-12 text-center">
           <p className="text-2xl text-gray-600">
             No jobs available at the moment
           </p>
         </div>
       ) : (
-        <div className="px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid gap-6 md:grid-cols-2 md:px-6 lg:grid-cols-3">
           {jobs.map((job) => (
-            <Card 
-              key={job.id} 
-              className="hover:shadow-xl transition-all duration-300 transform bg-white"
+            <Card
+              key={job.id}
+              className="transform bg-white transition-all duration-300 hover:shadow-xl"
             >
-              <CardHeader>
-                <CardTitle className="text-xl font-semibold text-gray-800">
+              <CardHeader className="p-4 md:p-6">
+                <CardTitle className="text-lg font-semibold text-gray-800 md:text-xl">
                   {job.title}
                 </CardTitle>
                 <CardDescription className="flex items-center text-gray-600">
@@ -81,16 +84,16 @@ export default async function JobListingsPage() {
                   {job.company}
                 </CardDescription>
               </CardHeader>
-              <CardContent>
-                <div className="space-y-3 mb-4 ">
-                  <div className="text-sm text-gray-600 bg-gray-100 px-2 py-1 rounded inline-block">
+              <CardContent className="px-4 pb-4 md:px-6 md:pb-6">
+                <div className="mb-4 space-y-3">
+                  <div className="inline-block rounded bg-gray-100 px-2 py-1 text-sm text-gray-600">
                     {job.category}
                   </div>
                 </div>
                 <Link href={`/candidate/jobs/${job.id}`}>
-                  <Button 
-                    variant="outline" 
-                    className="w-full hover:bg-blue-50 hover:border-blue-300"
+                  <Button
+                    variant="outline"
+                    className="w-full hover:border-blue-300 hover:bg-blue-50"
                   >
                     View Job Details
                   </Button>
@@ -101,5 +104,5 @@ export default async function JobListingsPage() {
         </div>
       )}
     </div>
-  )
+  );
 }
